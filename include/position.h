@@ -10,7 +10,7 @@ class position_t
  public:
   position_t();
 
-  const std::vector<point_t>& get_positions();
+  const std::vector<point_t>& get_positions() const;
  private:
   std::vector<point_t> m_pints;
 };
