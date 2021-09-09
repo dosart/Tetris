@@ -64,7 +64,12 @@ set_target_properties(
 target_sources(
         ${PROJECT_NAME}
         PRIVATE
+        include/assets.h
+        include/render.h
+        include/controller_t.h
         src/main.cpp
+        src/render.cpp
+        src/controller_t.cpp
 )
 
 set(PROJECT_INCLUDE_DIR include)
