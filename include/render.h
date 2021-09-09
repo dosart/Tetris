@@ -3,10 +3,13 @@
 
 #include <SFML/Graphics.hpp>
 
-class render_t
-{
+namespace game {
+class render_t {
  public:
   render_t(sf::Font m_font);
+
+  sf::RenderWindow &window();
+  void render();
 
  private:
   void _init();
@@ -16,5 +19,6 @@ class render_t
   sf::Font m_font;
   sf::Text m_text;
 };
+}
 
 #endif //TETRIS_INCLUDE_RENDER_H_
