@@ -3,30 +3,27 @@
 #ifndef TETRIS_INCLUDE_TETRAMINO_H_
 #define TETRIS_INCLUDE_TETRAMINO_H_
 
-#include  <random>
-#include  <iterator>
-#include "array"
+#include <SFML/Graphics.hpp>
+#include <vector>
+
+#include "point.h"
 
 namespace game {
 
-enum class tetromino_t { I = 0, Z, S, T, L, J, O };
+class tetromino_t final {
+ public:
+  tetromino_t(std::vector<sf::Vector2f> const *positions, sf::Sprite const *sprite) : m_positions{positions},
+                                                                                      m_sprite{sprite} {};
+  ~tetromino_t() = default;
 
-tetromino_t make_tetramino() {
-  return tetromino_t(rand()%7);
+  std::vector<sf::Vector2f> const *get_position() const { return m_positions; };
+  sf::Sprite const *get_sprite() const { return m_sprite; };
+
+ private:
+  std::vector<sf::Vector2f> const *m_positions;
+  sf::Sprite const *m_sprite;
+};
+
+tetromino_t make_tetromino();
 }
-
-unsigned int to_int(tetromino_t tetramino) {
-  switch (tetramino) {
-    case tetromino_t::I: return 0;
-    case tetromino_t::Z: return 1;
-    case tetromino_t::S: return 2;
-    case tetromino_t::T: return 3;
-    case tetromino_t::L: return 4;
-    case tetromino_t::O: return 5;
-    case tetromino_t::J: return 6;
-    default: return 0;
-  }
-}
-
 #endif //TETRIS_INCLUDE_TETRAMINO_H_
-}
