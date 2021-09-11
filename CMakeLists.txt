@@ -66,10 +66,12 @@ target_sources(
         PRIVATE
         include/assets.h
         include/render.h
-        include/controller_t.h
+        include/controller.h
+        include/tetromino.h
         src/main.cpp
         src/render.cpp
-        src/controller_t.cpp
+        src/controller.cpp
+        src/tetramino.cpp
 )
 
 set(PROJECT_INCLUDE_DIR include)
