@@ -4,12 +4,15 @@
 #include <SFML/Graphics.hpp>
 
 namespace game {
-class render_t {
+
+class render_t : public sf::Drawable, public sf::Transformable {
  public:
-  render_t(sf::Font m_font);
+  render_t(sf::Font font, sf::Texture texture);
 
   sf::RenderWindow &window();
   void render();
+
+  virtual void draw(sf::RenderTarget &target, sf::RenderStates states) const;
 
  private:
   void _init();
@@ -18,6 +21,7 @@ class render_t {
 
   sf::Font m_font;
   sf::Text m_text;
+  sf::Texture m_texture;
 };
 }
 
