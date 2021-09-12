@@ -4,15 +4,17 @@
 
 int main() {
 
-  if (auto font = game::load_font("../resources/calibri.ttf"); font.has_value()) {
+  auto font = game::load_font("../resources/calibri.ttf");
+  if (!font.has_value())
+    return -1;
 
-    if (auto texture = game::load_texture("../resources/tiles.png"); texture.has_value()) {
-      game::render_t render(std::move(font.value()), std::move(texture.value()));
-      game::controller controller(&render);
+  auto texture = game::load_texture("../resources/tiles.png");
+  if (!texture.has_value())
+    return -1;
 
-      controller.run();
-    }
-  }
+  game::render_t render(std::move(font.value()), std::move(texture.value()));
+  game::controller controller(&render);
+  controller.run();
 
   return 0;
 }
