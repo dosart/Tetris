@@ -90,6 +90,15 @@ target_include_directories(
 find_package(SFML 2.5 COMPONENTS audio graphics)
 target_link_libraries(${PROJECT_NAME} sfml-graphics sfml-audio)
 
+###################################################################################################
+##
+##      ResourcesLoader link
+##
+###################################################################################################
+
+add_subdirectory(external/ResourcesLoader)
+target_link_libraries(${PROJECT_NAME}  ResourcesLoader::library)
+
 
 ###################################################################################################
 ##
