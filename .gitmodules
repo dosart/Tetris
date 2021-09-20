@@ -1,0 +1,3 @@
+[submodule "external/ResourcesLoader"]
+	path = external/ResourcesLoader
+	url = https://github.com/dosart/ResourcesLoader.git
