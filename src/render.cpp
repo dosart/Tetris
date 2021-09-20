@@ -1,7 +1,7 @@
 #include "render.h"
 
 namespace game {
-render_t::render_t(sf::Font font, sf::Texture texture)
+render_t::render_t(sf::Font* font, sf::Texture* texture)
     : m_font{font}, m_texture{texture} {
   _init();
 }
@@ -9,7 +9,7 @@ render_t::render_t(sf::Font font, sf::Texture texture)
 void render_t::_init() {
   m_window.create(sf::VideoMode(320, 480), "The Tetris clone!");
   m_window.setFramerateLimit(60);
-  m_text = sf::Text("F2 - New Game / Esc - Exit / Arrow Keys - Move Shapes", m_font, 14);
+  m_text = sf::Text("F2 - New Game / Esc - Exit / Arrow Keys - Move Shapes", *m_font, 14);
   m_text.setFillColor(sf::Color::Black);
   m_text.setPosition(5.f, 5.f);
 }
@@ -26,7 +26,7 @@ void render_t::render() {
 }
 
 void render_t::draw(sf::RenderTarget &target, sf::RenderStates states) const {
-  sf::Sprite sprite(m_texture);
+  sf::Sprite sprite(*m_texture);
   sprite.setTextureRect(sf::IntRect(0, 0, 18, 18));
 
 

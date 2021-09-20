@@ -7,7 +7,7 @@ namespace game {
 
 class render_t : public sf::Drawable, public sf::Transformable {
  public:
-  render_t(sf::Font font, sf::Texture texture);
+  render_t(sf::Font* font, sf::Texture* texture);
 
   sf::RenderWindow &window();
   void render();
@@ -19,9 +19,9 @@ class render_t : public sf::Drawable, public sf::Transformable {
 
   sf::RenderWindow m_window;
 
-  sf::Font m_font;
+  sf::Font* m_font;
   sf::Text m_text;
-  sf::Texture m_texture;
+  sf::Texture* m_texture;
 };
 }
 
