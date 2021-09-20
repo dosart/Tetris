@@ -1,6 +1,5 @@
 #include "render.h"
 #include "controller.h"
-#include "assets.h"
 #include "AssetsLoader.hpp"
 
 int main() {
