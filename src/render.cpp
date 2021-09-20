@@ -1,3 +1,4 @@
+#include <tetromino.h>
 #include "render.h"
 
 namespace game {
@@ -29,7 +30,8 @@ void render_t::draw(sf::RenderTarget &target, sf::RenderStates states) const {
   sf::Sprite sprite(*m_texture);
   sprite.setTextureRect(sf::IntRect(0, 0, 18, 18));
 
-
-  target.draw(sprite, states);
+  auto tetramino = make_tetromino(&sprite);
+  tetramino.draw(target, states);
+  
 }
 }

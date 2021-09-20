@@ -1,7 +1,5 @@
 #include "tetromino.h"
 
-#include <array>
-
 namespace game {
 
 // global array coordinates of tetromino
@@ -16,7 +14,15 @@ static const std::vector<std::vector<sf::Vector2f>> tetrominos =
         {{0, 1}, {1, 1}, {0, 2}, {1, 2}}, // o
     };
 
-tetromino_t make_tetromino() {
-  return tetromino_t(&tetrominos[0], nullptr);
+tetromino_t make_tetromino(sf::Sprite *sprite) {
+  return tetromino_t(&tetrominos[0], sprite);
 }
+
+void tetromino_t::draw(sf::RenderTarget &target, sf::RenderStates states) {
+  for (const auto &position: *m_positions) {
+    m_sprite->setPosition(position.x*18, position.y*18);
+    target.draw(*m_sprite, states);
+  }
+}
+
 }
