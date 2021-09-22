@@ -12,8 +12,10 @@ int main() {
   font_loader.setSupportedFormats("ttf", "[]");
   font_loader.loadAssets("../resources", [](auto &item, auto path) { item.loadFromFile(path.string()); });
 
-  game::render_t render(font_loader.getPtr("calibri"), texture_loader.getPtr("tiles"));
-  game::controller controller(&render);
+  ::game::tetris_t tetris(texture_loader.getPtr("tiles"));
+  ::game::render_t render(&tetris, font_loader.getPtr("calibri"));
+
+  ::game::controller controller(&render, &tetris);
   controller.run();
 
   return 0;

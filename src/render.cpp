@@ -2,8 +2,8 @@
 #include "render.h"
 
 namespace game {
-render_t::render_t(sf::Font* font, sf::Texture* texture)
-    : m_font{font}, m_texture{texture} {
+render_t::render_t(tetris_t *tetris, sf::Font *font)
+    : m_tetris{tetris}, m_font{font} {
   _init();
 }
 
@@ -27,11 +27,10 @@ void render_t::render() {
 }
 
 void render_t::draw(sf::RenderTarget &target, sf::RenderStates states) const {
-  sf::Sprite sprite(*m_texture);
-  sprite.setTextureRect(sf::IntRect(0, 0, 18, 18));
+  auto tetramino = m_tetris->current_tetramino();
+  target.draw(tetramino, states);
 
-  auto tetramino = make_tetromino(&sprite);
-  tetramino.draw(target, states);
-  
+  target.draw(tetramino, states);
+
 }
 }

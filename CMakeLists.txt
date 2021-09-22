@@ -64,14 +64,16 @@ set_target_properties(
 target_sources(
         ${PROJECT_NAME}
         PRIVATE
-        include/assets.h
+        include/tetris.h
         include/render.h
         include/controller.h
         include/tetromino.h
+
         src/main.cpp
         src/render.cpp
         src/controller.cpp
         src/tetramino.cpp
+        src/tetris.cpp
 )
 
 set(PROJECT_INCLUDE_DIR include)
@@ -97,7 +99,7 @@ target_link_libraries(${PROJECT_NAME} sfml-graphics sfml-audio)
 ###################################################################################################
 
 add_subdirectory(external/ResourcesLoader)
-target_link_libraries(${PROJECT_NAME}  ResourcesLoader::library)
+target_link_libraries(${PROJECT_NAME} ResourcesLoader::library)
 
 
 ###################################################################################################

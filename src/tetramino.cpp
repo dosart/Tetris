@@ -15,10 +15,10 @@ static const std::vector<std::vector<sf::Vector2f>> tetrominos =
     };
 
 tetromino_t make_tetromino(sf::Sprite *sprite) {
-  return tetromino_t(&tetrominos[0], sprite);
+  return tetromino_t(&tetrominos[5], sprite);
 }
 
-void tetromino_t::draw(sf::RenderTarget &target, sf::RenderStates states) {
+void tetromino_t::draw(sf::RenderTarget &target, sf::RenderStates states) const {
   for (const auto &position: *m_positions) {
     m_sprite->setPosition(position.x*18, position.y*18);
     target.draw(*m_sprite, states);

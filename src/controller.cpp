@@ -2,8 +2,8 @@
 
 namespace game {
 
-controller::controller(render_t *render)
-    : m_render{render} {
+controller::controller(render_t *render, tetris_t *tetris)
+    : m_render{render}, m_tetris{tetris} {
 
 }
 

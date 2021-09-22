@@ -8,7 +8,7 @@
 
 namespace game {
 
-class tetromino_t final {
+class tetromino_t : public sf::Drawable, public sf::Transformable {
  public:
   tetromino_t(std::vector<sf::Vector2f> const *positions, sf::Sprite *sprite) : m_positions{positions},
                                                                                 m_sprite{sprite} {};
@@ -17,7 +17,7 @@ class tetromino_t final {
   std::vector<sf::Vector2f> const *get_position() const { return m_positions; };
   sf::Sprite const *get_sprite() const { return m_sprite; };
 
-  void draw(sf::RenderTarget &target, sf::RenderStates states);
+  void draw(sf::RenderTarget &target, sf::RenderStates states) const;
 
  private:
   std::vector<sf::Vector2f> const *m_positions;

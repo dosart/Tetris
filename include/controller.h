@@ -2,13 +2,14 @@
 #define TETRIS_INCLUDE_CONTROLLER_H_
 
 #include "render.h"
+#include "tetris.h"
 
 namespace game {
 
 class controller final {
 
  public:
-  explicit controller(render_t *render);
+  explicit controller(render_t *render, tetris_t *tetris);
   ~controller() = default;
 
   void run();
@@ -17,6 +18,7 @@ class controller final {
   void handle_events(sf::RenderWindow &window);
 
   render_t *m_render;
+  tetris_t *m_tetris;
 };
 
 }
