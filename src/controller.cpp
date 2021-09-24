@@ -20,6 +20,12 @@ void controller::handle_events(sf::RenderWindow &window) {
     if (event.type==sf::Event::Closed) {
       window.close();
     }
+    if (event.type==sf::Event::KeyPressed) {
+      if (event.key.code==sf::Keyboard::Left)
+        m_tetris->move_tetramino(game::Direction::LEFT);
+      if (event.key.code==sf::Keyboard::Right)
+        m_tetris->move_tetramino(game::Direction::RIGHT);
+    }
   }
 }
 }

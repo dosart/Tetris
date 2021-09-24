@@ -29,8 +29,5 @@ void render_t::render() {
 void render_t::draw(sf::RenderTarget &target, sf::RenderStates states) const {
   auto tetramino = m_tetris->current_tetramino();
   target.draw(tetramino, states);
-
-  target.draw(tetramino, states);
-
 }
 }

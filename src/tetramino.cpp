@@ -18,11 +18,23 @@ tetromino_t make_tetromino(sf::Sprite *sprite) {
   return tetromino_t(&tetrominos[5], sprite);
 }
 
+tetromino_t::tetromino_t(const std::vector<sf::Vector2f> *positions, sf::Sprite *sprite) : m_sprite{sprite} {
+  std::copy(std::cbegin(*positions), std::cend(*positions), std::back_inserter(m_positions));
+}
+
 void tetromino_t::draw(sf::RenderTarget &target, sf::RenderStates states) const {
-  for (const auto &position: *m_positions) {
+  for (const auto &position: m_positions) {
     m_sprite->setPosition(position.x*18, position.y*18);
     target.draw(*m_sprite, states);
   }
+}
+
+void tetromino_t::move_y(float dy) {
+  std::for_each(std::begin(m_positions), std::end(m_positions), [&dy](sf::Vector2f &position) { position.y += dy; });
+}
+
+void tetromino_t::move_x(float dx) {
+  std::for_each(std::begin(m_positions), std::end(m_positions), [&dx](sf::Vector2f &position) { position.x += dx; });
 }
 
 }

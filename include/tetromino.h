@@ -10,17 +10,19 @@ namespace game {
 
 class tetromino_t : public sf::Drawable, public sf::Transformable {
  public:
-  tetromino_t(std::vector<sf::Vector2f> const *positions, sf::Sprite *sprite) : m_positions{positions},
-                                                                                m_sprite{sprite} {};
+  tetromino_t(std::vector<sf::Vector2f> const *positions, sf::Sprite *sprite);
   ~tetromino_t() = default;
 
-  std::vector<sf::Vector2f> const *get_position() const { return m_positions; };
+  std::vector<sf::Vector2f> const &get_position() const { return m_positions; };
   sf::Sprite const *get_sprite() const { return m_sprite; };
 
   void draw(sf::RenderTarget &target, sf::RenderStates states) const;
 
+  void move_x(float dx);
+  void move_y(float dy);
+
  private:
-  std::vector<sf::Vector2f> const *m_positions;
+  std::vector<sf::Vector2f> m_positions;
   sf::Sprite *m_sprite;
 };
 
