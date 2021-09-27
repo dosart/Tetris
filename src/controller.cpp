@@ -25,6 +25,9 @@ void controller::handle_events(sf::RenderWindow &window) {
         m_tetris->move_tetramino(game::Direction::LEFT);
       if (event.key.code==sf::Keyboard::Right)
         m_tetris->move_tetramino(game::Direction::RIGHT);
+      if (event.key.code==sf::Keyboard::Up)
+        //rotation
+        m_tetris->move_tetramino(game::Direction::UP);
     }
   }
 }

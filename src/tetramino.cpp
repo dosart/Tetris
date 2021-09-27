@@ -37,4 +37,15 @@ void tetromino_t::move_x(float dx) {
   std::for_each(std::begin(m_positions), std::end(m_positions), [&dx](sf::Vector2f &position) { position.x += dx; });
 }
 
+void tetromino_t::rotate() {
+  auto center_of_rotation = m_positions[1];
+  for (auto &position: m_positions) {
+    auto x = position.y - center_of_rotation.y;
+    auto y = position.x - center_of_rotation.x;
+
+    position.x = center_of_rotation.x - x;
+    position.y = center_of_rotation.y - y;
+  }
+}
+
 }

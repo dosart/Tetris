@@ -20,7 +20,7 @@ void tetris_t::move_tetramino(game::Direction direction) {
       break;
     case Direction::DOWN:m_tetramino.move_x(5);
       break;
-    case Direction::UD:m_tetramino.move_x(-5);
+    case Direction::UP:m_tetramino.rotate();
       break;
   }
 }

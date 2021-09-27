@@ -21,6 +21,8 @@ class tetromino_t : public sf::Drawable, public sf::Transformable {
   void move_x(float dx);
   void move_y(float dy);
 
+  void rotate();
+
  private:
   std::vector<sf::Vector2f> m_positions;
   sf::Sprite *m_sprite;
