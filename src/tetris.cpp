@@ -18,11 +18,15 @@ void tetris_t::move_tetramino(const sf::Event::KeyEvent &event) {
       break;
     case sf::Keyboard::Right:m_tetramino.move_x(1);
       break;
-    case sf::Keyboard::Down:m_tetramino.move_y(5);
+    case sf::Keyboard::Down:m_tetramino.move_y(1);
       break;
     case sf::Keyboard::Up:m_tetramino.rotate();
       break;
     default:break;
   }
+}
+
+void tetris_t::move_down() {
+  m_tetramino.move_y(1);
 }
 }

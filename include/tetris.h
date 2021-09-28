@@ -14,6 +14,7 @@ class tetris_t {
   tetromino_t& current_tetramino();
 
   void move_tetramino(const sf::Event::KeyEvent& event);
+  void move_down();
 
  private:
   sf::Texture* m_texture;

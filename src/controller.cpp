@@ -3,7 +3,7 @@
 namespace game {
 
 controller::controller(render_t *render, tetris_t *tetris)
-    : m_render{render}, m_tetris{tetris}, m_timer(), m_time_per_frame{0.3f} {
+    : m_render{render}, m_tetris{tetris}, m_clock(), timer{0} {
 
 }
 
@@ -18,14 +18,20 @@ void controller::handle_events(sf::RenderWindow &window) {
   sf::Event event;
   while (window.pollEvent(event)) {
 
-//    auto time_since_last_update = m_timer.getElapsedTime().asSeconds();
-//    m_timer.restart();
-
     if (event.type==sf::Event::Closed) {
       window.close();
     }
     if (event.type==sf::Event::KeyPressed) {
       m_tetris->move_tetramino(event.key);
+    }
+
+    float time = m_clock.getElapsedTime().asSeconds();
+    m_clock.restart();
+    timer += time;
+
+    if (timer > 0.3f) {
+      m_tetris->move_down();
+      timer = 0;
     }
   }
 }
