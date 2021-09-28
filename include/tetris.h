@@ -1,8 +1,8 @@
 #ifndef TETRIS_INCLUDE_GAME_H_
 #define TETRIS_INCLUDE_GAME_H_
 
+#include <SFML/Window.hpp>
 #include "tetromino.h"
-#include "direction.h"
 
 namespace game {
 
@@ -13,7 +13,7 @@ class tetris_t {
 
   tetromino_t& current_tetramino();
 
-  void move_tetramino(game::Direction direction);
+  void move_tetramino(const sf::Event::KeyEvent& event);
 
  private:
   sf::Texture* m_texture;

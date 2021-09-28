@@ -3,7 +3,7 @@
 namespace game {
 
 controller::controller(render_t *render, tetris_t *tetris)
-    : m_render{render}, m_tetris{tetris} {
+    : m_render{render}, m_tetris{tetris}, m_timer(), m_time_per_frame{0.3f} {
 
 }
 
@@ -17,19 +17,17 @@ void controller::run() {
 void controller::handle_events(sf::RenderWindow &window) {
   sf::Event event;
   while (window.pollEvent(event)) {
+
+//    auto time_since_last_update = m_timer.getElapsedTime().asSeconds();
+//    m_timer.restart();
+
     if (event.type==sf::Event::Closed) {
       window.close();
     }
     if (event.type==sf::Event::KeyPressed) {
-      if (event.key.code==sf::Keyboard::Left)
-        m_tetris->move_tetramino(game::Direction::LEFT);
-      if (event.key.code==sf::Keyboard::Right)
-        m_tetris->move_tetramino(game::Direction::RIGHT);
-      if (event.key.code==sf::Keyboard::Up)
-        //rotation
-        m_tetris->move_tetramino(game::Direction::UP);
+      m_tetris->move_tetramino(event.key);
     }
   }
 }
-}
 
+}

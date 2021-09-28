@@ -19,6 +19,8 @@ class controller final {
 
   render_t *m_render;
   tetris_t *m_tetris;
+  sf::Clock m_timer;
+  float m_time_per_frame;
 };
 
 }

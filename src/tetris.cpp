@@ -12,16 +12,17 @@ tetromino_t &tetris_t::current_tetramino() {
   return m_tetramino;
 }
 
-void tetris_t::move_tetramino(game::Direction direction) {
-  switch (direction) {
-    case Direction::LEFT:m_tetramino.move_x(-1);
+void tetris_t::move_tetramino(const sf::Event::KeyEvent &event) {
+  switch (event.code) {
+    case sf::Keyboard::Left:m_tetramino.move_x(-1);
       break;
-    case Direction::RIGHT:m_tetramino.move_x(1);
+    case sf::Keyboard::Right:m_tetramino.move_x(1);
       break;
-    case Direction::DOWN:m_tetramino.move_x(5);
+    case sf::Keyboard::Down:m_tetramino.move_y(5);
       break;
-    case Direction::UP:m_tetramino.rotate();
+    case sf::Keyboard::Up:m_tetramino.rotate();
       break;
+    default:break;
   }
 }
 }
